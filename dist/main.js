@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \*******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n\nconst projects = [];\nlet G = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"General\",\"24/4/25\")\nlet F = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"General\",\"24/4/25\")\nG.AddTask({task:1})\nG.AddTask({task:12})\nprojects.push(G)\nprojects.push(F)\nconsole.log(projects)\nconst Ptabs =  document.querySelector(\"#ptab\")\nconst Pbody =  document.querySelector(\"#pbody\")\n\nprojects.forEach((el,i )=> Pbody.innerHTML = \"this is number \" + i)\n\n//# sourceURL=webpack://todolist/./src/UI.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n\nconst projects = [];\nlet G = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"General\",\"24/4/25\")\nG.AddTask({task:1})\nG.AddTask({task:12})\nprojects.push(G)\nconsole.log(projects)\nconst Ptabs =  document.querySelector(\"#ptab\")\nconst Pbody =  document.querySelector(\"#pbody\")\n\nprojects.forEach((el,i )=> Pbody.innerHTML = \"this is number \" + i)\n\n//# sourceURL=webpack://todolist/./src/UI.js?");
 
 /***/ }),
 
