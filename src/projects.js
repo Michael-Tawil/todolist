@@ -1,7 +1,5 @@
 import './tasks'
-const projects = []
-
-class Project{
+export default class Project{
     constructor(name,ddate){
         this.name = name;
         this.ddate = ddate;
@@ -16,8 +14,3 @@ class Project{
     }
 
 }
-let G = new Project("General","24/4/25")
-G.SetName("khara")
-G.AddTask({task:1})
-G.AddTask({task:12})
-console.log(G.tasks)
