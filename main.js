@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \*******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _worker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./worker */ \"./src/worker.js\");\n\n\nconst Ptabs =  document.querySelector(\"#ptab\")\nconst Pbody =  document.querySelector(\"#pbody\")\n\n_worker__WEBPACK_IMPORTED_MODULE_0__.projects.forEach(el=> {\n    let tab = document.createElement(\"div\");\n    tab.innerText = el.name\n    Ptabs.appendChild(tab);\n\n    el.tasks.forEach(task => {\n        let card = document.createElement(\"div\");\n        card.innerHTML = `${task.name} ${task.ddate}`;\n        Pbody.appendChild(card);\n    })\n})\n\n//# sourceURL=webpack://todolist/./src/UI.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Pbody\": () => (/* binding */ Pbody),\n/* harmony export */   \"Ptabs\": () => (/* binding */ Ptabs)\n/* harmony export */ });\n/* harmony import */ var _worker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./worker */ \"./src/worker.js\");\n\n\nconst Ptabs =  document.querySelector(\"#ptab\")\nconst Pbody =  document.querySelector(\"#pbody\")\n\n_worker__WEBPACK_IMPORTED_MODULE_0__.projects.forEach((el,i)=> {\n    let tab = document.createElement(\"div\");\n    tab.addEventListener(\"click\",_worker__WEBPACK_IMPORTED_MODULE_0__.tabclick)\n    tab.innerText = el.name\n    tab.dataset.info = i\n    Ptabs.appendChild(tab);\n\n    el.tasks.forEach(task => {\n        let card = document.createElement(\"div\");\n        card.innerHTML = `${task.name} ${task.ddate}`;\n        Pbody.appendChild(card);\n    })\n})\n\n\n\n//# sourceURL=webpack://todolist/./src/UI.js?");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wor
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI */ \"./src/UI.js\");\n\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI */ \"./src/UI.js\");\n/* harmony import */ var _worker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./worker */ \"./src/worker.js\");\n\n\n\n\n//# sourceURL=webpack://todolist/./src/index.js?");
 
 /***/ }),
 
@@ -156,7 +156,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projects\": () => (/* binding */ projects)\n/* harmony export */ });\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n\n\nconst projects = [];\nlet G = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"General\",\"24/4/25\")\nG.AddTask(\"num1\",\"23/4/66\")\nG.AddTask(\"num2\",\"23/4/66\")\n\nprojects.push(G)\n\n\n\n//# sourceURL=webpack://todolist/./src/worker.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projects\": () => (/* binding */ projects),\n/* harmony export */   \"tabclick\": () => (/* binding */ tabclick)\n/* harmony export */ });\n/* harmony import */ var _projects__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./projects */ \"./src/projects.js\");\n/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UI */ \"./src/UI.js\");\n\n\n\nconst projects = [];\nlet G = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"General\",\"24/4/25\")\nlet N = new _projects__WEBPACK_IMPORTED_MODULE_0__[\"default\"](\"new project\",\"23/4/55\")\nG.AddTask(\"num1\",\"23/4/66\")\nG.AddTask(\"num2\",\"23/4/66\")\nN.AddTask(\"num3\",\"23/4/66\")\nN.AddTask(\"num4\",\"23/4/66\")\nprojects.push(G)\nprojects.push(N)\n\nlet tabclick = (e)=> {\n    let inof = e.target.dataset.info;\n    _UI__WEBPACK_IMPORTED_MODULE_1__.Pbody.innerHTML = \"\";\n    projects[inof].tasks.forEach(el => {\n        let card = document.createElement(\"div\");\n        card.innerHTML = `${el.name} ${el.ddate}`;\n        _UI__WEBPACK_IMPORTED_MODULE_1__.Pbody.appendChild(card);\n    });\n}\n\n\n\n//# sourceURL=webpack://todolist/./src/worker.js?");
 
 /***/ })
 
