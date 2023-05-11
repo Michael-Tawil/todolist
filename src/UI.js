@@ -1,11 +1,13 @@
-import { projects } from "./worker";
+import { projects,tabclick } from "./worker";
 
 const Ptabs =  document.querySelector("#ptab")
 const Pbody =  document.querySelector("#pbody")
 
-projects.forEach(el=> {
+projects.forEach((el,i)=> {
     let tab = document.createElement("div");
+    tab.addEventListener("click",tabclick)
     tab.innerText = el.name
+    tab.dataset.info = i
     Ptabs.appendChild(tab);
 
     el.tasks.forEach(task => {
@@ -14,3 +16,5 @@ projects.forEach(el=> {
         Pbody.appendChild(card);
     })
 })
+
+export {Ptabs,Pbody}
