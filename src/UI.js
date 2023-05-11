@@ -1,13 +1,16 @@
-import Project from'./projects'
-const projects = [];
-let G = new Project("General","24/4/25")
-G.AddTask({task:1})
-G.AddTask({task:12})
-projects.push(G)
-console.log(projects)
+import { projects } from "./worker";
+
 const Ptabs =  document.querySelector("#ptab")
 const Pbody =  document.querySelector("#pbody")
 
-projects.forEach((el,i)=> {
-    
+projects.forEach(el=> {
+    let tab = document.createElement("div");
+    tab.innerText = el.name
+    Ptabs.appendChild(tab);
+
+    el.tasks.forEach(task => {
+        let card = document.createElement("div");
+        card.innerHTML = `${task.name} ${task.ddate}`;
+        Pbody.appendChild(card);
+    })
 })
