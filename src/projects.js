@@ -16,4 +16,10 @@ export default class Project{
         let temp = this.tasks.findIndex(el => el.task === rtask);
         this.tasks.splice(temp,1);
     }
+    SetTName =(nname,newn) => {
+        let tempt = this.tasks.findIndex(el => el.name === nname);
+        console.log(tempt)
+        this.tasks[tempt].name = newn;
+    }
+
 }

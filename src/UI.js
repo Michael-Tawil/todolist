@@ -8,13 +8,10 @@ projects.forEach((el,i)=> {
     tab.addEventListener("click",tabclick)
     tab.innerText = el.name
     tab.dataset.info = i
+    tab.classList.add("tcard")
     Ptabs.appendChild(tab);
 
-    el.tasks.forEach(task => {
-        let card = document.createElement("div");
-        card.innerHTML = `${task.name} ${task.ddate}`;
-        Pbody.appendChild(card);
-    })
 })
+Pbody.innerHTML = "SELECT A PROJECT";
 
 export {Ptabs,Pbody}
