@@ -13,7 +13,7 @@ export default class Project{
         this.tasks.push(newtask);
     }
     RemoveTask = (rtask) => {
-        let temp = this.tasks.findIndex(el => el.task === rtask);
+        let temp = this.tasks.findIndex(el => el.name === rtask);
         this.tasks.splice(temp,1);
     }
     SetTName =(nname,newn) => {
