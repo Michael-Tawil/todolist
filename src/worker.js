@@ -17,8 +17,13 @@ G.SetTName("num1","Task1")
 console.log(G)
 
 let tabclick = (e)=> {
+
     let inof = e.target.dataset.info;
     Pbody.innerHTML = "";
+    let newbtn = document.createElement("button");
+    newbtn.classList.add("newbuttn");
+    newbtn.innerHTML = "+";
+    Pbody.appendChild(newbtn);
     projects[inof].tasks.forEach(el => {
         let card = document.createElement("div");
         card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;

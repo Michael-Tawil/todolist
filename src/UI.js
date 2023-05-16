@@ -13,5 +13,9 @@ projects.forEach((el,i)=> {
 
 })
 Pbody.innerHTML = "SELECT A PROJECT";
+let newbtn = document.createElement("button");
+    newbtn.classList.add("newbuttn");
+    newbtn.innerHTML = "+";
+    Pbody.appendChild(newbtn);
 
 export {Ptabs,Pbody}
