@@ -1,6 +1,6 @@
 import Project from'./projects'
 import Task from './tasks';
-import {Ptabs,Pbody,newbtn,nban,ovlay} from './UI'
+import {Ptabs,Pbody,newbtn,nban,ovlay,shwproj} from './UI'
 
 const projects = [];
 let G = new Project("General","24/4/25")
@@ -44,9 +44,12 @@ let tabclick = (e)=> {
 }
 let addNewp = (e) => {
     console.log(e.target.classList.value);
+
     if (e.target.classList.value === "nbtnpro"){
         modal.classList.add("active");
         ovlay.classList.add("active");
+    }else if (e.target.classList.value === "newbuttn") {
+        
     }
 }
 
@@ -56,4 +59,13 @@ let closeNewp = (e) => {
     ovlay.classList.remove("active");
 }
 
-export {projects,tabclick,addNewp,closeNewp}
+let nproject = (e) => {
+    e.preventDefault();
+    let title = document.querySelector("#projecttitle").value;
+    let dtate  = document.querySelector("#projectdate").value;
+    projects.push(new Project(title,dtate));
+    closeNewp()
+    shwproj()
+}
+
+export {projects,tabclick,addNewp,closeNewp,nproject}

@@ -1,13 +1,14 @@
-body{
-    background-color:#fcaf98;
-    color:black;
-    overflow:hidden;
+body {
+    background-color: #fcaf98;
+    color: black;
+    overflow: hidden;
     height: 100vh;
     width: 100vw;
-    margin:0 0;
+    margin: 0 0;
 }
-#main{
-    
+
+#main {
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,37 +17,42 @@ body{
     height: 100%;
 
 }
-h2{
+
+h2 {
     color: #034c52;
-    word-wrap:normal;
+    word-wrap: normal;
 }
-#header{
+
+#header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 20%;
-    height:100%;
+    height: 100%;
     border: 1px solid #034c52;
     flex: 0 0 auto;
 }
-#ptab{
+
+#ptab {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#pbody{
-    height:100%;
-    width:100%;
+
+#pbody {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
 
 }
-.dcard{
+
+.dcard {
     min-width: 150px;
     min-height: 150px;
     display: flex;
@@ -54,39 +60,42 @@ h2{
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
-    margin:  15px ;
+    margin: 15px;
     padding: 10px 10px;
-    box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+    box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, .3);
     font-size: 20px;
     text-align: center;
     font-size: 17px;
     background-color: #f18666;
-    color:Black;
+    color: Black;
 }
-.tcard{
+
+.tcard {
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #034c52;
-    width:100%;
-    margin:  5px ;
-    padding-bottom:5px;
-    color:#034c52;
+    width: 100%;
+    margin: 5px;
+    padding-bottom: 5px;
+    color: #034c52;
     font-size: 20px;
     text-align: center;
     font-size: 17px;
 }
-.newbuttn{
+
+.newbuttn {
     position: absolute;
     bottom: 36px;
-    right:36px;
-    width:100px;
-    height:50px;
+    right: 36px;
+    width: 100px;
+    height: 50px;
     background-color: #034c52;
-    color:whitesmoke;
+    color: whitesmoke;
     border-radius: 5px;
-    box-shadow: 0px 13px 50px -1px rgba(0,0,0,0.28);
+    box-shadow: 0px 13px 50px -1px rgba(0, 0, 0, 0.28);
 }
+
 .timebanner {
     position: absolute;
     bottom: 36px;
@@ -96,43 +105,47 @@ h2{
     text-shadow: 1px 5px 10px #000000;
 }
 
-.nbtnpro{
-    width:100%;
-    height:50px;
+.nbtnpro {
+    width: 100%;
+    height: 50px;
     background-color: #034c52;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
-.modal{
+.modal {
     display: none;
     position: fixed;
     top: 50%;
-    left:50%;
+    left: 50%;
     transform: translate(-50%, -50%) scale(0);
     transition: 200ms ease-in-out;
-    border:1px solid black;
-    border-radius:5px;
-    z-index:10;
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 10;
     background-color: #f3744e;
     width: 500px;
     max-width: 800px;
 }
-.modal.active{
+
+.modal.active {
     transform: translate(-50%, -50%) scale(1);
-    display:block;
+    display: block;
 }
-.modal-header{
-    padding:10px 15px;
-    display:flex;
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
 }
-.modal-header .title{
+
+.modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
 }
-.modal-header .close-button{
+
+.modal-header .close-button {
     cursor: pointer;
     border: none;
     outline: none;
@@ -140,30 +153,36 @@ h2{
     font-size: 1.25rem;
     font-weight: bold;
 }
-.modal-body,form{
+
+.modal-body,
+form {
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.modal-body input,.modal-body select,#submit-nbook{
-    width:250px;
-    height:20px;
+
+.modal-body input,
+.modal-body select,
+#submit-nbook {
+    width: 250px;
+    height: 20px;
     border: none;
-    border-radius:5px;
-    margin:10px;
+    border-radius: 5px;
+    margin: 10px;
     text-align: center;
     font-size: 20px;
-    padding:5px;
+    padding: 5px;
 }
 
-.modal-body select,#submit-nbook{
+.modal-body select,
+#submit-nbook {
     font-size: 16px;
-    padding:2px;
+    padding: 2px;
 }
 
-#overlay{
+#overlay {
     display: none;
     position: fixed;
     opacity: 0;
@@ -171,12 +190,13 @@ h2{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
     pointer-events: none;
     transition: 200ms ease-in-out;
 }
-#overlay.active{
+
+#overlay.active {
     pointer-events: all;
     opacity: 1;
-    display:block;
+    display: block;
 }
