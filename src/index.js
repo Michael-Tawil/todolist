@@ -1,3 +1,3 @@
-import './style.css';
-import './UI'
-import './worker'
+import "./style.css";
+import "./UI";
+import "./worker";
