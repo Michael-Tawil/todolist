@@ -57,6 +57,7 @@ let closeNewp = (e) => {
     
     modal.classList.remove("active");
     ovlay.classList.remove("active");
+    document.querySelector("form").reset();
 }
 
 let nproject = (e) => {
