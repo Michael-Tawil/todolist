@@ -30,6 +30,7 @@ console.log(G);
 let tabclick = (e) => {
   let inof = e.target.dataset.info;
   Pbody.innerHTML = "";
+  newbtn.dataset.info = e.target.dataset.info;
   Pbody.appendChild(newbtn);
   nban.innerHTML = "Project Due Date: " + projects[inof].ddate;
   Pbody.appendChild(nban);
@@ -38,8 +39,11 @@ let tabclick = (e) => {
     card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
     card.classList.add("dcard");
     Pbody.appendChild(card);
+    newbtn.dataset.info = e.target.dataset.info;
+    
   });
 };
+
 let addNewp = (e) => {
   console.log(e.target.classList.value);
 
@@ -47,22 +51,50 @@ let addNewp = (e) => {
     modal.classList.add("active");
     ovlay.classList.add("active");
   } else if (e.target.classList.value === "newbuttn") {
+    modal2.classList.add("active");
+    ovlay.classList.add("active");
   }
 };
 
-let closeNewp = (e) => {
+let closeNewp = () => {
   modal.classList.remove("active");
+  modal2.classList.remove("active");
   ovlay.classList.remove("active");
   document.querySelector("form").reset();
 };
 
 let nproject = (e) => {
+ 
   e.preventDefault();
   let title = document.querySelector("#projecttitle").value;
   let dtate = document.querySelector("#projectdate").value;
   projects.push(new Project(title, dtate));
+  
+  
   closeNewp();
   shwproj();
 };
 
-export { projects, tabclick, addNewp, closeNewp, nproject };
+let newtsk = (e) => {
+  e.preventDefault();
+  let temp = document.querySelector(".newbuttn").dataset.info;
+  console.log(temp)
+  let tname = document.querySelector("#tasktitle").value;
+  let tddate = document.querySelector("#taskdate").value;
+  let tdesc = document.querySelector("#taskdesc").value;
+  let tpriority = document.querySelector("#taskPriority").value;
+  projects[temp].tasks.push(new Task(tname,tddate,tdesc,tpriority));
+  Pbody.innerHTML = "";
+  projects[temp].tasks.forEach((el) => {
+    let card = document.createElement("div");
+    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
+    card.classList.add("dcard");
+    Pbody.appendChild(card);
+
+  });
+  Pbody.appendChild(newbtn);
+  Pbody.appendChild(nban);
+  closeNewp();
+}
+
+export { projects, tabclick, addNewp, closeNewp, nproject,newtsk };

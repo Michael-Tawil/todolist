@@ -112,7 +112,7 @@ h2 {
     color: whitesmoke;
 }
 
-.modal {
+.modal,.modal2 {
     display: none;
     position: fixed;
     top: 50%;
@@ -127,7 +127,7 @@ h2 {
     max-width: 800px;
 }
 
-.modal.active {
+.modal.active,.modal2.active {
     transform: translate(-50%, -50%) scale(1);
     display: block;
 }
