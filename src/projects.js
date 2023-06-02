@@ -12,8 +12,8 @@ export default class Project {
     let newtask = new Task(name, ddate, desc, priority);
     this.tasks.push(newtask);
   };
-  RemoveTask = (rtask) => {
-    let temp = this.tasks.findIndex((el) => el.name === rtask);
+  RemoveTask = (temp) => {
+    
     this.tasks.splice(temp, 1);
   };
   SetTN = (nname, newn) => {

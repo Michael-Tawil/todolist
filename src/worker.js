@@ -27,22 +27,7 @@ G.SetTDesc("TASK1", "do this now bro");
 G.SetTP("TASK1", 4);
 console.log(G);
 
-let tabclick = (e) => {
-  let inof = e.target.dataset.info;
-  Pbody.innerHTML = "";
-  newbtn.dataset.info = e.target.dataset.info;
-  Pbody.appendChild(newbtn);
-  nban.innerHTML = "Project Due Date: " + projects[inof].ddate;
-  Pbody.appendChild(nban);
-  projects[inof].tasks.forEach((el) => {
-    let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
-    card.classList.add("dcard");
-    Pbody.appendChild(card);
-    newbtn.dataset.info = e.target.dataset.info;
-    
-  });
-};
+
 
 let addNewp = (e) => {
   console.log(e.target.classList.value);
@@ -83,7 +68,7 @@ let newtsk = (e) => {
   let tddate = document.querySelector("#taskdate").value;
   let tdesc = document.querySelector("#taskdesc").value;
   let tpriority = document.querySelector("#taskPriority").value;
-  projects[temp].tasks.push(new Task(tname,tddate,tdesc,tpriority));
+  projects[temp].AddTask(tname,tddate,tdesc,tpriority);
   Pbody.innerHTML = "";
   projects[temp].tasks.forEach((el) => {
     let card = document.createElement("div");
@@ -96,5 +81,24 @@ let newtsk = (e) => {
   Pbody.appendChild(nban);
   closeNewp();
 }
+let dtask = (e) =>{
+  let temp = document.querySelector(".newbuttn").dataset.info;
+  console.log(e)
+  projects[temp].RemoveTask(e.target.dataset.dinfo);
+  Pbody.innerHTML = "";
+  projects[temp].tasks.forEach((el,i) => {
+    let card = document.createElement("div");
+    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
+    card.classList.add("dcard");
+    let delcard = document.createElement("button");
+    delcard.addEventListener("click",dtask)
+    delcard.innerHTML = "Delete"
+    delcard.dataset.dinfo = i;
+    delcard.classList.add("delcards");
+    Pbody.appendChild(card);
+    card.appendChild(delcard);
+  })
+  
+}
 
-export { projects, tabclick, addNewp, closeNewp, nproject,newtsk };
+export { projects, addNewp, closeNewp, nproject,newtsk, dtask };
