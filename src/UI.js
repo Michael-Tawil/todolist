@@ -83,9 +83,20 @@ let shwproj = () => {
   });
 };
 
+let shwpri = () => {
+  projects.forEach(pro => pro.tasks.forEach(el => {
+    if (el.priority == "1"){
 
+    let card = document.createElement("div");
+    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
+    card.classList.add("dcard");
+   
+    Pbody.appendChild(card);
+    } 
+  }))
+}
 
-shwproj();
-shwtasks(0);
+shwpri();
+shwproj()
 
 export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2 };
