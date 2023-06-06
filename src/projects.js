@@ -16,24 +16,21 @@ export default class Project {
     
     this.tasks.splice(temp, 1);
   };
-  SetTN = (nname, newn) => {
-    let tempt = this.tasks.findIndex((el) => el.name === nname);
-    console.log(tempt);
-    this.tasks[tempt].name = newn;
+  SetTN = (cinfo, newn) => {
+  
+    this.tasks[cinfo].name = newn;
   };
-  SetTD = (nname, ndd) => {
-    let tempt = this.tasks.findIndex((el) => el.name === nname);
-    console.log(tempt);
-    this.tasks[tempt].ddate = ndd;
+  SetTD = (cinfo, ndd) => {
+    
+    this.tasks[cinfo].ddate = ndd;
   };
-  SetTDesc = (nname, ndesc) => {
-    let tempt = this.tasks.findIndex((el) => el.name === nname);
-    console.log(tempt);
-    this.tasks[tempt].desc = ndesc;
+  SetTDesc = (cinfo, ndesc) => {
+    
+    this.tasks[cinfo].desc = ndesc;
   };
-  SetTP = (nname, pri) => {
-    let tempt = this.tasks.findIndex((el) => el.name === nname);
-    console.log(tempt);
-    this.tasks[tempt].priority = pri;
+  
+  SetTP = (cinfo, pri) => {
+    
+    this.tasks[cinfo].priority = pri;
   };
 }

@@ -1,4 +1,4 @@
-import { projects, addNewp, closeNewp, nproject, newtsk, dtask } from "./worker";
+import { projects, addNewp, closeNewp, nproject, newtsk, dtask, edittask } from "./worker";
 
 const modal2 = document.querySelector("#modal2");
 
@@ -41,6 +41,8 @@ let shwtasks = (temp) => {
     delcard.addEventListener("click",dtask)
     delcard.innerHTML = "Delete"
     delcard.dataset.dinfo = i;
+    card.dataset.cnfo = i;
+    card.addEventListener("dblclick",addNewp)
     delcard.classList.add("delcards");
     Pbody.appendChild(card);
     card.appendChild(delcard);
@@ -86,4 +88,4 @@ let shwproj = () => {
 shwproj();
 shwtasks(0);
 
-export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks };
+export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2 };
