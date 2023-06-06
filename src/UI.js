@@ -10,8 +10,8 @@ subtn2.addEventListener("click", newtsk);
 
 const ovlay = document.querySelector("#overlay");
 
-
-
+const closeforms = document.querySelectorAll(".close-button");
+closeforms.forEach(btn => btn.addEventListener("click",closeNewp))
 
 const Ptabs = document.querySelector("#ptab");
 
@@ -26,14 +26,14 @@ newbtn.addEventListener("click",addNewp);
 let nban = document.createElement("div");
 nban.classList.add("timebanner");
 
-let tabclick = (e) => {
-  let inof = e.target.dataset.info;
-  Pbody.innerHTML = "";
-  newbtn.dataset.info = e.target.dataset.info;
-  Pbody.appendChild(newbtn);
-  nban.innerHTML = "Project Due Date: " + projects[inof].ddate;
-  Pbody.appendChild(nban);
-  projects[inof].tasks.forEach((el,i) => {
+let shwtasks = (temp) => {
+  if(projects[temp].tasks.length == 0){
+    newbtn.dataset.info = temp;
+    Pbody.appendChild(newbtn);
+    nban.innerHTML = "Project Due Date: " + projects[temp].ddate;
+    Pbody.appendChild(nban);
+  }else{
+  projects[temp].tasks.forEach((el,i) => {
     let card = document.createElement("div");
     card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
     card.classList.add("dcard");
@@ -44,7 +44,17 @@ let tabclick = (e) => {
     delcard.classList.add("delcards");
     Pbody.appendChild(card);
     card.appendChild(delcard);
+    newbtn.dataset.info = temp;
+    Pbody.appendChild(newbtn);
+    nban.innerHTML = "Project Due Date: " + projects[temp].ddate;
+    Pbody.appendChild(nban);
   });
+
+}}
+let tabclick = (e) => {
+  let inof = e.target.dataset.info;
+  Pbody.innerHTML = "";
+  shwtasks(inof);
 };
 let shwproj = () => {
   Ptabs.innerHTML = "";
@@ -58,6 +68,11 @@ let shwproj = () => {
   projects.forEach((el, i) => {
     let tab = document.createElement("div");
     tab.addEventListener("click", tabclick);
+    tab.addEventListener("dblclick",function(e){
+      projects.splice(e.target.dataset.info,1)
+      shwproj()
+      Pbody.innerHTML = "Project DELETED, Please choose another"
+    })
     tab.innerText = el.name;
     tab.dataset.info = i;
 
@@ -66,20 +81,9 @@ let shwproj = () => {
   });
 };
 
-let shwG = () => {
-  projects[0].tasks.forEach((el) => {
-    let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
-    card.classList.add("dcard");
-    Pbody.appendChild(card);
-  });
-  nban.innerHTML = "Project Due Date: " + projects[0].ddate;
-  Pbody.appendChild(nban);
-  newbtn.dataset.info = 0;
-  Pbody.appendChild(newbtn);
-}
+
 
 shwproj();
-shwG();
+shwtasks(0);
 
-export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj };
+export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks };

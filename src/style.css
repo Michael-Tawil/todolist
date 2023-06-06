@@ -49,6 +49,7 @@ h2 {
     justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
+    position: relative;
 
 }
 
@@ -99,7 +100,7 @@ h2 {
 .timebanner {
     position: absolute;
     bottom: 36px;
-    left: 536px;
+    left:36px;
     font-size: 1.25rem;
     color: #034c52;
     text-shadow: 1px 5px 10px #000000;

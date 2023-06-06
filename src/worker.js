@@ -1,6 +1,6 @@
 import Project from "./projects";
 import Task from "./tasks";
-import { Ptabs, Pbody, newbtn, nban, ovlay, shwproj } from "./UI";
+import { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks } from "./UI";
 
 const projects = [];
 let G = new Project("General", "24/4/25");
@@ -70,35 +70,19 @@ let newtsk = (e) => {
   let tpriority = document.querySelector("#taskPriority").value;
   projects[temp].AddTask(tname,tddate,tdesc,tpriority);
   Pbody.innerHTML = "";
-  projects[temp].tasks.forEach((el) => {
-    let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
-    card.classList.add("dcard");
-    Pbody.appendChild(card);
-
-  });
+  shwtasks(temp)
+  
   Pbody.appendChild(newbtn);
   Pbody.appendChild(nban);
   closeNewp();
 }
 let dtask = (e) =>{
-  let temp = document.querySelector(".newbuttn").dataset.info;
+  let tempy = document.querySelector(".newbuttn").dataset.info;
   console.log(e)
-  projects[temp].RemoveTask(e.target.dataset.dinfo);
+  projects[tempy].RemoveTask(e.target.dataset.dinfo);
+  console.log(e)
   Pbody.innerHTML = "";
-  projects[temp].tasks.forEach((el,i) => {
-    let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
-    card.classList.add("dcard");
-    let delcard = document.createElement("button");
-    delcard.addEventListener("click",dtask)
-    delcard.innerHTML = "Delete"
-    delcard.dataset.dinfo = i;
-    delcard.classList.add("delcards");
-    Pbody.appendChild(card);
-    card.appendChild(delcard);
-  })
-  
+  shwtasks(tempy)
 }
 
 export { projects, addNewp, closeNewp, nproject,newtsk, dtask };
