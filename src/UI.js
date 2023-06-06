@@ -90,6 +90,7 @@ let shwpri = () => {
     let card = document.createElement("div");
     card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
     card.classList.add("dcard");
+    card.style.backgroundColor = "#ff4545";
    
     Pbody.appendChild(card);
     } 

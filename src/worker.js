@@ -49,6 +49,8 @@ let closeNewp = () => {
   modal2.classList.remove("active");
   ovlay.classList.remove("active");
   document.querySelector("form").reset();
+  subtn2.addEventListener("click",newtsk)
+  subtn2.removeEventListener("click",edittask)
 };
 
 let nproject = (e) => {
