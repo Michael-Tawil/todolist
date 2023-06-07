@@ -50,6 +50,9 @@ let shwtasks = (temp) => {
     Pbody.appendChild(newbtn);
     nban.innerHTML = "Project Due Date: " + projects[temp].ddate;
     Pbody.appendChild(nban);
+    if (el.priority == "1"){
+      card.style.backgroundColor = "#ff4545"
+    }
   });
 
 }}
