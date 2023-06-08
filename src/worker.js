@@ -9,28 +9,20 @@ if (!localStorage.getItem("projarr")){
   let G = new Project("General", "24/4/25");
   let N = new Project("new project", "23/4/55");
 
-  G.AddTask("TASK1", "23/4/23", "dosomething1", "1");
-  G.AddTask("TASK2", "24/4/23", "dosomething1", "2");
-  G.AddTask("TASK3", "25/4/23", "dosomething1", "2");
-  G.AddTask("TASK4", "26/4/23", "dosomething1", "3");
-  G.AddTask("TASK5", "27/4/23", "dosomething1", "4");
-  G.AddTask("TASK6", "28/4/23", "dosomething1", "5");
-  G.AddTask("TASK7", "29/4/23", "dosomething1", "61");
-  G.AddTask("TASK8", "30/4/23", "dosomething1", "1");
-  G.AddTask("TASK9", "31/4/23", "dosomething1", "5");
-  G.AddTask("TASK10", "01/4/23", "dosomething1", "5");
-  G.AddTask("TASK11", "02/4/23", "dosomething1", "5");
-  G.AddTask("TASK12", "03/4/23", "dosomething1", "1");
-  N.AddTask("TASK 3", "25/5/23", "dosomething3", "3");
-  N.AddTask("Task 4", "29/5/23", "dosomething4", "4");
+  G.AddTask("TASK1", "23/4/23", "LEarn HTML", "1");
+  G.AddTask("TASK2", "24/4/23", "Learn JS", "2");
+  G.AddTask("TASK3", "25/4/23", "Learn CSS", "2");
+  N.AddTask("TASK 3", "25/5/23", "FIREBASE", "3");
+  N.AddTask("Task 4", "29/5/23", "MONGODB", "4");
   projects.push(G);
   projects.push(N);
+
 }else{
-  projects = localStorage.getItem("projarr");
+  projects = JSON.parse(localStorage.getItem("projarr"));
+  projects.forEach(element => {
+    Object.setPrototypeOf(element,new Project)
+  });
 }
-
-
-
 
 
 let addNewp = (e) => {
@@ -66,6 +58,7 @@ let nproject = (e) => {
   let title = document.querySelector("#projecttitle").value;
   let dtate = document.querySelector("#projectdate").value;
   projects.push(new Project(title, dtate));
+  localStorage.setItem("projarr",JSON.stringify(projects))
   closeNewp();
   shwproj();
 };
@@ -80,6 +73,7 @@ let newtsk = (e) => {
   let tpriority = document.querySelector("#taskPriority").value;
   projects[temp].AddTask(tname,tddate,tdesc,tpriority);
   Pbody.innerHTML = "";
+  localStorage.setItem("projarr",JSON.stringify(projects))
   shwtasks(temp)
   closeNewp();
 }
@@ -90,6 +84,7 @@ let dtask = (e) =>{
   console.log(e)
   Pbody.innerHTML = "";
   shwtasks(tempy)
+  localStorage.setItem("projarr",JSON.stringify(projects))
 }
 
 let edittask = (e) =>{
@@ -109,6 +104,7 @@ let edittask = (e) =>{
   Pbody.innerHTML = "";
   shwtasks(temp)
   closeNewp();
+  localStorage.setItem("projarr",JSON.stringify(projects))
 
 }
 

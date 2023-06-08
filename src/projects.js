@@ -8,28 +8,28 @@ export default class Project {
   GetName = () => this.name;
   SetName = (nname) => (this.name = nname);
 
-  AddTask = (name, ddate, desc, priority) => {
+  AddTask(name, ddate, desc, priority){
     let newtask = new Task(name, ddate, desc, priority);
     this.tasks.push(newtask);
   };
-  RemoveTask = (temp) => {
+  RemoveTask(temp){
     
     this.tasks.splice(temp, 1);
   };
-  SetTN = (cinfo, newn) => {
+  SetTN(cinfo, newn){
   
     this.tasks[cinfo].name = newn;
   };
-  SetTD = (cinfo, ndd) => {
+  SetTD(cinfo, ndd){
     
     this.tasks[cinfo].ddate = ndd;
   };
-  SetTDesc = (cinfo, ndesc) => {
+  SetTDesc(cinfo, ndesc){
     
     this.tasks[cinfo].desc = ndesc;
   };
   
-  SetTP = (cinfo, pri) => {
+  SetTP(cinfo, pri){
     
     this.tasks[cinfo].priority = pri;
   };

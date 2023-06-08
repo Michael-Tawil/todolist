@@ -35,7 +35,14 @@ let shwtasks = (temp) => {
   }else{
   projects[temp].tasks.forEach((el,i) => {
     let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
+    let ncard = document.createElement("h3");
+    let dcard = document.createElement("h4");
+    let descard = document.createElement("p");
+    let pcard = document.createElement("h4");
+    ncard.innerText = `${el.name}`;
+    dcard.innerText = `${el.ddate}`;
+    descard.innerText = `${el.desc}`;
+    pcard.innerText = `${el.priority}`;
     card.classList.add("dcard");
     let delcard = document.createElement("button");
     delcard.addEventListener("click",dtask)
@@ -45,6 +52,10 @@ let shwtasks = (temp) => {
     card.addEventListener("dblclick",addNewp)
     delcard.classList.add("delcards");
     Pbody.appendChild(card);
+    card.appendChild(ncard);
+    card.appendChild(dcard);
+    card.appendChild(descard);
+    card.appendChild(pcard);
     card.appendChild(delcard);
     newbtn.dataset.info = temp;
     Pbody.appendChild(newbtn);
@@ -75,6 +86,7 @@ let shwproj = () => {
     tab.addEventListener("click", tabclick);
     tab.addEventListener("dblclick",function(e){
       projects.splice(e.target.dataset.info,1)
+      localStorage.setItem("projarr",JSON.stringify(projects))
       shwproj()
       Pbody.innerHTML = "Project DELETED, Please choose another"
     })
@@ -87,17 +99,36 @@ let shwproj = () => {
 };
 
 let shwpri = () => {
-  projects.forEach(pro => pro.tasks.forEach(el => {
+  projects.forEach((pro,i) => pro.tasks.forEach(el => {
     if (el.priority == "1"){
 
     let card = document.createElement("div");
-    card.innerHTML = `${el.name} ${el.ddate} ${el.desc} ${el.priority}`;
+    let ncard = document.createElement("h3");
+    let dcard = document.createElement("h4");
+    let descard = document.createElement("p");
+    let pcard = document.createElement("h4");
+    ncard.innerText = `${el.name}`;
+    dcard.innerText = `${el.ddate}`;
+    descard.innerText = `${el.desc}`;
+    pcard.innerText = `${el.priority}`;
     card.classList.add("dcard");
-    card.style.backgroundColor = "#ff4545";
-   
+    let delcard = document.createElement("button");
+    delcard.addEventListener("click",dtask)
+    delcard.innerHTML = "Delete"
+    delcard.dataset.dinfo = i;
+    card.dataset.cnfo = i;
+    card.addEventListener("dblclick",addNewp)
+    delcard.classList.add("delcards");
     Pbody.appendChild(card);
+    card.appendChild(ncard);
+    card.appendChild(dcard);
+    card.appendChild(descard);
+    card.appendChild(pcard);
+    card.appendChild(delcard);
+    card.style.backgroundColor = "#ff4545"
     } 
   }))
+
 }
 
 shwpri();
