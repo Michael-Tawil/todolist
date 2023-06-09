@@ -1,6 +1,6 @@
 import Project from "./projects";
 import Task from "./tasks";
-import { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2 } from "./UI";
+import { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2,subtn } from "./UI";
 
 let projects = [];
 
@@ -40,6 +40,11 @@ let addNewp = (e) => {
     subtn2.dataset.cnfo = e.target.dataset.cnfo;
     subtn2.removeEventListener("click",newtsk)
     subtn2.addEventListener("click",edittask)
+  }else if (e.target.classList.value === "tcard"){
+    modal.classList.add("active");
+    ovlay.classList.add("active");
+    subtn.removeEventListener("click",nproject)
+    subtn.addEventListener("click",editproj)
   }
 };
 
@@ -50,6 +55,8 @@ let closeNewp = () => {
   document.querySelector("form").reset();
   subtn2.addEventListener("click",newtsk)
   subtn2.removeEventListener("click",edittask)
+  subtn.addEventListener("click",nproject)
+  subtn.removeEventListener("click",editproj)
 };
 
 let nproject = (e) => {
@@ -84,6 +91,19 @@ let dtask = (e) =>{
   console.log(e)
   Pbody.innerHTML = "";
   shwtasks(tempy)
+  localStorage.setItem("projarr",JSON.stringify(projects))
+}
+let editproj = (e) => {
+  e.preventDefault();
+  let temp = document.querySelector(".newbuttn").dataset.info;
+  let tname = document.querySelector("#projecttitle").value;
+  let tddate = document.querySelector("#projectdate").value;
+  projects[temp].SetName(tname);
+  projects[temp].SetDate(tddate);
+  shwproj()
+  Pbody.innerHTML = "";
+  shwtasks(temp)
+  closeNewp();
   localStorage.setItem("projarr",JSON.stringify(projects))
 }
 

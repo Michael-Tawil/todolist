@@ -6,7 +6,9 @@ export default class Project {
     this.tasks = [];
   }
   GetName = () => this.name;
-  SetName = (nname) => (this.name = nname);
+  SetName(nname){this.name = nname}
+  
+  SetDate(date){this.ddate = date}
 
   AddTask(name, ddate, desc, priority){
     let newtask = new Task(name, ddate, desc, priority);

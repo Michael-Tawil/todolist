@@ -84,15 +84,15 @@ let shwproj = () => {
   projects.forEach((el, i) => {
     let tab = document.createElement("div");
     tab.addEventListener("click", tabclick);
-    tab.addEventListener("dblclick",function(e){
+    tab.addEventListener("dblclick",addNewp);
+    tab.addEventListener("contextmenu",function(e){
       projects.splice(e.target.dataset.info,1)
-      localStorage.setItem("projarr",JSON.stringify(projects))
       shwproj()
-      Pbody.innerHTML = "Project DELETED, Please choose another"
-    })
+      Pbody.innerHTML = "PROJECT DELETED";
+      localStorage.setItem("projarr",JSON.stringify(projects))
+    });
     tab.innerText = el.name;
     tab.dataset.info = i;
-
     tab.classList.add("tcard");
     Ptabs.appendChild(tab);
   });
@@ -124,7 +124,6 @@ let shwpri = () => {
     card.appendChild(dcard);
     card.appendChild(descard);
     card.appendChild(pcard);
-    card.appendChild(delcard);
     card.style.backgroundColor = "#ff4545"
     } 
   }))
@@ -134,4 +133,4 @@ let shwpri = () => {
 shwpri();
 shwproj()
 
-export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2 };
+export { Ptabs, Pbody, newbtn, nban, ovlay, shwproj,shwtasks,subtn2,subtn };
