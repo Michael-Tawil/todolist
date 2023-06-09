@@ -86,6 +86,7 @@ let shwproj = () => {
     tab.addEventListener("click", tabclick);
     tab.addEventListener("dblclick",addNewp);
     tab.addEventListener("contextmenu",function(e){
+      e.preventDefault();
       projects.splice(e.target.dataset.info,1)
       shwproj()
       Pbody.innerHTML = "PROJECT DELETED";
